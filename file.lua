@@ -237,25 +237,6 @@ coroutine.wrap(pcall)(function()
         end
     end
 end)
-coroutine.wrap(pcall)(function()
-    if _G.Settings["FPS Cap"] or (_G.Settings.Other and _G.Settings.Other["FPS Cap"]) then
-        if setfpscap then
-            if type(_G.Settings["FPS Cap"] or (_G.Settings.Other and _G.Settings.Other["FPS Cap"])) == "string" or type(_G.Settings["FPS Cap"] or (_G.Settings.Other and _G.Settings.Other["FPS Cap"])) == "number" then
-                setfpscap(tonumber(_G.Settings["FPS Cap"] or (_G.Settings.Other and _G.Settings.Other["FPS Cap"])))
-                if _G.ConsoleLogs then
-                    warn("FPS Capped to " .. tostring(_G.Settings["FPS Cap"] or (_G.Settings.Other and _G.Settings.Other["FPS Cap"])))
-                end
-            elseif _G.Settings["FPS Cap"] or (_G.Settings.Other and _G.Settings.Other["FPS Cap"]) == true then
-                setfpscap(1e6)
-                if _G.ConsoleLogs then
-                    warn("FPS Uncapped")
-                end
-            end
-        else
-            warn("FPS Cap Failed")
-        end
-    end
-end)
 game.DescendantAdded:Connect(function(value)
     wait(_G.LoadedWait or 1)
     CheckIfBad(value)
